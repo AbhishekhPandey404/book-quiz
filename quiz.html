@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            text-align: center;
+            color: #666;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .option {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .submit-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Book Quiz</h1>
+    <p>Answer a few questions to discover the type of book you might enjoy!</p>
+
+    <div class="question">
+        <p>1. What is your favorite genre of movies?</p>
+        <label><input type="radio" name="q1" value="action"> Action</label><br>
+        <label><input type="radio" name="q1" value="romance"> Romance</label><br>
+        <label><input type="radio" name="q1" value="horror"> Horror</label><br>
+        <label><input type="radio" name="q1" value="fantasy"> Fantasy</label><br>
+    </div>
+
+    <div class="question">
+        <p>2. How do you spend your free time?</p>
+        <label><input type="radio" name="q2" value="outdoors"> Outdoors</label><br>
+        <label><input type="radio" name="q2" value="indoors"> Indoors</label><br>
+        <label><input type="radio" name="q2" value="socializing"> Socializing with friends</label><br>
+        <label><input type="radio" name="q2" value="alone"> Alone</label><br>
+    </div>
+
+    <div class="question">
+        <p>3. What is your favorite type of setting for a story?</p>
+        <label><input type="radio" name="q3" value="city"> City</label><br>
+        <label><input type="radio" name="q3" value="countryside"> Countryside</label><br>
+        <label><input type="radio" name="q3" value="other"> Other</label><br>
+    </div>
+
+    <button class="submit-button" onclick="submitQuiz()">Submit</button>
+
+    <div class="result" id="quizResult"></div>
+</div>
+
+<script>
+    function submitQuiz() {
+        var answers = {
+            q1: document.querySelector('input[name="q1"]:checked').value,
+            q2: document.querySelector('input[name="q2"]:checked').value,
+            q3: document.querySelector('input[name="q3"]:checked').value
+        };
+
+        var result = document.getElementById("quizResult");
+
+        if (answers.q1 === "action" && answers.q2 === "outdoors" && answers.q3 === "city") {
+            result.innerHTML = "You might enjoy adventure or thriller books set in urban environments! For example, you should read <b>'The Girl with the Dragon Tattoo' by Stieg Larsson</b>.";
+        } else if (answers.q1 === "romance" && answers.q2 === "indoors" && answers.q3 === "countryside") {
+            result.innerHTML = "You might enjoy heartwarming romance novels set in rural areas! For example, you should read <b>'Pride and Prejudice' by Jane Austen</b>.";
+        } else if (answers.q1 === "horror" && answers.q2 === "alone") {
+            result.innerHTML = "You might enjoy chilling horror stories that keep you on the edge of your seat! For example, you should read <b>'The Shining' by Stephen King</b>.";
+        } else if (answers.q1 === "fantasy" && answers.q2 === "socializing") {
+            result.innerHTML = "You might enjoy epic fantasy sagas with rich world-building and intricate plots! For example, you should read <b>'The Lord of the Rings' by J.R.R. Tolkien</b>.";
+        } else {
+            result.textContent = "Based on your answers, we couldn't determine a specific recommendation. Try again!";
+        }
+    }
+</script>
+
+</body>
+</html>
+
